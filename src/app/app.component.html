@@ -1,1 +1,30 @@
 <!-- PUT YOUR CODE HERE MENU BUILT FROM: https://getbootstrap.com/docs/5.3/forms/select/#default -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">ElectroMan</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#" routerLinkActive="router-link-active"
+                    routerLink="budget-list">Listado</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" routerLinkActive="router-link-active"
+                    routerLink="budget-form">Nueva Cotización</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" routerLinkActive="router-link-active"
+                    routerLink="budget-view">Form</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div>    
+  <router-outlet></router-outlet>
+</div>

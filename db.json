@@ -1,5 +1,74 @@
 {
-  "budgets": [],
+  "budgets": [
+    {
+      "id": "ab05",
+      "client": "Martin",
+      "date": "2024-11-01T00:00:00.000Z",
+      "items": [
+        {
+          "zone": "Comedor",
+          "moduleType": {
+            "id": "2",
+            "name": "Interruptor doble",
+            "slots": 2,
+            "price": 2000
+          }
+        },
+        {
+          "zone": "Comedor",
+          "moduleType": {
+            "id": "1",
+            "name": "Interruptor simple",
+            "slots": 1,
+            "price": 1000
+          }
+        }
+      ]
+    },
+    {
+      "id": "3c55",
+      "client": "Martin2",
+      "date": "2024-11-01T00:00:00.000Z",
+      "items": [
+        {
+          "zone": "Cocina",
+          "moduleType": {
+            "id": "2",
+            "name": "Interruptor doble",
+            "slots": 2,
+            "price": 2000
+          }
+        },
+        {
+          "zone": "Comedor",
+          "moduleType": {
+            "id": "2",
+            "name": "Interruptor doble",
+            "slots": 2,
+            "price": 2000
+          }
+        },
+        {
+          "zone": "Comedor",
+          "moduleType": {
+            "id": "4",
+            "name": "Toma corriente doble",
+            "slots": 2,
+            "price": 3000
+          }
+        },
+        {
+          "zone": "Comedor",
+          "moduleType": {
+            "id": "3",
+            "name": "Toma corriente simple",
+            "slots": 1,
+            "price": 1500
+          }
+        }
+      ]
+    }
+  ],
   "module-types": [
     {
       "id": "1",

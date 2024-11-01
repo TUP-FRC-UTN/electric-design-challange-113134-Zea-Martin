@@ -1,4 +1,103 @@
-<!-- BUILT IT FROM:
-https://getbootstrap.com/docs/5.3/forms/form-control/#example
-https://getbootstrap.com/docs/5.3/forms/select/#default
-https://getbootstrap.com/docs/5.3/forms/select/#default -->
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    
+    <div class="mb-3">
+      <label for="inputNombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="inputNombre" formControlName="name" />
+      <div *ngIf="userForm.get('name')?.invalid && (userForm.get('name')?.dirty || userForm.get('name')?.touched)"
+        class="text-danger">
+        <small>{{ getNameErrorMessage() }}</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="inputFecha" class="form-label">Fecha</label>
+      <input type="date" class="form-control" id="inputFecha" formControlName="fecha" />
+      <div *ngIf="userForm.get('fecha')?.invalid && (userForm.get('fecha')?.dirty || userForm.get('fecha')?.touched)"
+        class="text-danger">
+        <small>{{ getFechaErrorMessage() }}</small>
+      </div>
+    </div>
+
+    <div class="mb-3 text-end">
+      <a type="button" (click)="addModule()">
+        + Módulo
+      </a>
+    </div>
+
+    <div formArrayName="modules" class="row">
+      <div *ngFor="let moduleForm of modules.controls; let i = index" [formGroupName]="i"
+        class="card col-md-6 mb-3 p-3">
+        <div class="d-flex justify-content-end">
+          <a type="button" class="" (click)="deleteModule(i)">
+            X
+          </a>
+        </div>
+
+        <div>
+          <div
+            *ngIf="userForm.get('modules')?.invalid && (userForm.get('modules')?.dirty || userForm.get('modules')?.touched)"
+            class="text-danger">
+            <small>{{ getModulesErrorMessage() }}</small>
+          </div>
+          <h5>Módulo {{ i + 1 }}</h5>
+        </div>
+
+        <div class="mb-3">
+          <label [for]="'selectTypeModule' + i" class="form-label">Tipo Módulo</label>
+          <select [id]="'selectTypeModule' + i" formControlName="typeModule" class="form-select"
+            (change)="onModuleTypeChange($event, moduleForm)">
+            <option value="" disabled>Seleccione un tipo de módulo</option>
+            <option *ngFor="let moduleType of moduleTypes" [value]="moduleType.id">
+              {{ moduleType.name }}
+            </option>
+          </select>
+          <div
+            *ngIf="moduleForm.get('typeModule')?.invalid && (moduleForm.get('typeModule')?.dirty || moduleForm.get('typeModule')?.touched)"
+            class="text-danger">
+            <small>Campo requerido</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label [for]="'selectAmbient' + i" class="form-label">Ambiente</label>
+          <select [id]="'selectAmbient' + i" formControlName="ambient" class="form-select">
+            <option value="" disabled>Seleccione un ambiente</option>
+            <option *ngFor="let zone of zones" [value]="zone">
+              {{ zone }}
+            </option>
+          </select>
+          <div
+            *ngIf="moduleForm.get('ambient')?.invalid && (moduleForm.get('ambient')?.dirty || moduleForm.get('ambient')?.touched)"
+            class="text-danger">
+            <small>Campo requerido</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label [for]="'inputPrice' + i" class="form-label">Precio</label>
+          <input type="number" [id]="'inputPrice' + i" formControlName="price" class="form-control" readonly />
+        </div>
+
+        <div class="mb-3">
+          <label [for]="'inputSlots' + i" class="form-label">Lugares</label>
+          <input type="number" [id]="'inputSlots' + i" formControlName="lugares" class="form-control" readonly />
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col text-start">
+        <button class="btn btn-secondary">
+          Volver
+        </button>
+      </div>
+      <div class="col text-end">
+        <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">
+          Guardar
+        </button>
+      </div>
+    </div>
+
+  </div>
+</form>
